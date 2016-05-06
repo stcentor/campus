@@ -1,0 +1,41 @@
+<!--<%= @user.name %>, <%= @user.email %>-->
+
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+    
+      </h1>
+    </section>
+  </aside>
+  
+  
+ 
+    <div id='map' class = 'dark'></div>
+    
+    <script type = 'text/javascript'>
+      function get_loc(){
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+          x.innerHTML = "Geolocation is not supported by this browser.";}
+      }
+      function showPosition(position) {
+        var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
+      }
+      
+      L.mapbox.accessToken = 'pk.eyJ1Ijoic2h1dGVkIiwiYSI6ImNpbmkzd21nMDB3aGt1a2x5aTBzYzMwMWsifQ.3A032qJzNSPTLjVKFpW4XA'
+        var map = L.mapbox.map('map', 'mapbox.streets')
+        .setView([/*lat,lon*/42.7302, -73.6788], 15)
+      var circle = L.circleMarker([42.730, -73.6785], {radius: 128}).addTo(map);
+     
+    </script>
+
+</div>
+
+   
+  

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang = "en">
+  <head>
+    <meta charset ="UTF-8" >
+    <title><%= full_title(yield(:title)) %></title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <%= render 'layouts/shim' %>
+    <script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
+    <style>
+      body { margin:30px; padding: 44px; }
+      #map { position:absolute; top:150px; bottom:120px;  left:444px; width:50%; }
+    </style>
+  </head>
+  <body>
+    <%= render 'layouts/heading' %>
+    <div class="container"></div>
+      <% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+      <% end %>
+      <%= yield %>
+      <%= render 'layouts/footing' %>
+      <!--<%= debug(params) if Rails.env.development? %>-->
+    </div>
+    
+  </body>
+</html>
